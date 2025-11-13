@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio - Lucas Gabriel Scomparin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+  <style>
+    html {
+  scroll-behavior: smooth;
+}
+
+    :root {
+      --verde-mais-claro: #1AEDAE;
+      --verde-agua: #93F5D8;
+      --verde-preto: #26332F;
+      --verde-escuro: #0A5D44;
+      --verde-medio: #167A64;
+      --texto: #ffffff;
+      --fundo: var(--verde-preto);
+      --fundo-header: var(--verde-escuro);
+      --fundo-card: var(--verde-medio);
+    }
+
+    /* Corpo */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background-color: var(--fundo);
+      color: var(--texto);
+      animation: fadeInBody 1.2s ease-in;
+      scroll-behavior: smooth;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; background-color: #000; }
+      to { opacity: 1; background-color: var(--fundo); }
+    }
+
+    /* Cabeçalho */
+    header {
+      background-color: var(--fundo-header);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 50px;
+      flex-wrap: wrap;
+      transition: background-color 0.4s;
+    }
+
+    /* Perfil */
+    .perfil {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+.subtitulo {
+  font-size: 16px;
+  color: var(--verde-agua);
+  margin: 4px 0 0;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+    .img-swap {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .img-swap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.4s ease;
+    }
+
+    .img-swap img.normal { opacity: 1; }
+    .img-swap img.hover { opacity: 0; }
+    .img-swap:hover img.normal { opacity: 0; }
+    .img-swap:hover img.hover { opacity: 1; }
+
+    header h1 {
+      font-size: 24px;
+      margin: 0;
+      color: var(--verde-agua);
+    }
+
+    /* Navegação */
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    nav a {
+      font-weight: bold;
+      padding: 10px 15px;
+      border-radius: 10px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      color: var(--verde-mais-claro);
+    }
+
+    nav a:hover {
+      background-color: var(--verde-medio);
+      transform: scale(1.05);
+    }
+
+    /* Conteúdo principal */
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      color: var(--verde-mais-claro);
+      border-bottom: 2px solid var(--verde-mais-claro);
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    /* Projetos */
+    .projetos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .projeto {
+      background-color: var(--fundo-card);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s, background-color 0.4s;
+    }
+
+    .projeto:hover {
+      transform: translateY(-5px);
+    }
+
+    .projeto h3 {
+      margin: 10px;
+      color: white;
+    }
+
+    .projeto p {
+      margin: 0 10px 15px;
+      font-size: 14px;
+    }
+
+    /* Contato */
+    .contato {
+      background-color: var(--fundo-header);
+      padding: 20px;
+      border-radius: 10px;
+    }
+.lista-contato {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  word-break: break-word; /* ✅ força quebra de linha em palavras longas */
+  overflow-wrap: anywhere; /* ✅ garante quebra do e-mail em telas pequenas */
+  max-width: 90%; /* evita ultrapassar a tela */
+  text-align: center;
+}
+
+.lista-contato li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap; /* ✅ garante que texto e ícone quebrem juntos */
+}
+
+.lista-contato a {
+  color: var(--verde-agua);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.lista-contato a:hover {
+  text-decoration: underline;
+}
+
+/* 💬 ícones */
+.lista-contato i {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* ícones individuais */
+.lista-contato i.email { background-image: url('https://cdn-icons-png.flaticon.com/512/561/561127.png'); }
+.lista-contato i.linkedin { background-image: url('https://cdn-icons-png.flaticon.com/512/174/174857.png'); }
+.lista-contato i.github { background-image: url('https://cdn-icons-png.flaticon.com/512/25/25231.png'); }
+.lista-contato i.instagram { background-image: url('https://cdn-icons-png.flaticon.com/512/2111/2111463.png'); }
+
+/* 📧 Ajuste do e-mail em telas pequenas */
+@media (max-width: 400px) {
+  /* Oculta o texto normal do link */
+  .lista-contato a[href^="mailto:"] {
+    font-size: 0;
+    position: relative;
+  }
+
+  /* Mostra apenas o nome do e-mail antes do @ */
+  .lista-contato a[href^="mailto:"]::after {
+    content: "lucasgabrielscomparin";
+    font-size: 16px;
+    color: var(--verde-agua);
+    position: relative;
+  }
+}
+
+    .lista-contato a {
+      color: var(--verde-agua);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .lista-contato a:hover {
+      text-decoration: underline;
+      color: var(--verde-mais-claro);
+    }
+
+    /* Rodapé */
+    footer {
+      background-color: var(--fundo-header);
+      color: #ccc;
+      text-align: center;
+      padding: 15px;
+      transition: background-color 0.4s;
+    }
+
+    /* 💡 Responsividade */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+      }
+
+      .perfil {
+        flex-direction: column;
+      }
+
+      .img-swap {
+        width: 80px;
+        height: 80px;
+      }
+
+      header h1 {
+        font-size: 20px;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      nav a {
+        padding: 8px 12px;
+      }
+
+      main {
+        margin: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 20px;
+      }
+
+      .projeto p {
+        font-size: 13px;
+      }
+
+      .lista-contato li {
+        font-size: 16px;
+      }
+    }
+
+
+
+    /* 💡 Tecnologias */
+#tecnologias {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.tecnologias {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  
+}
+
+.tech {
+  background-color: var(--fundo-card);
+  border-radius: 10px;
+  padding: 20px;
+  width: 150px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.tech:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.tech img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.tech p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--verde-agua);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .tech {
+    width: 120px;
+    padding: 15px;
+  }
+
+  .tech img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="perfil">
+      <div class="img-swap">
+        <img src="img/GatoDfoto.jfif" alt="Lucas Gabriel" class="normal">
+        <img src="img/WhatsApp Image 2025-11-05 at 19.30.54.jpeg" alt="Lucas Gabriel Hover" class="hover">
+      </div>
+      <h1>Lucas Gabriel Scomparin</h1>
+      <p class="subtitulo">Desenvolvedora | Dev Junior | Programando em Python</p>
+
+    </div>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+<main>
+  <section id="sobre">
+    <h2>Sobre mim</h2>
+    <p>Olá! Sou <strong>Lucas Gabriel Scomparin</strong>, apaixonado por tecnologia e design. 
+    Crio interfaces simples e funcionais, com foco na beleza dos detalhes. 
+    Estou aprendendo javascript e python ja estou avançado em python e estou iniciando em Javascript </p>
+  </section>
+
+  <!-- 💻 NOVA SEÇÃO DE TECNOLOGIAS -->
+  <section id="tecnologias">
+    <h2>Tecnologias</h2>
+    <div class="tecnologias">
+      <div class="tech">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+        <p>HTML5</p>
+      </div>
+      <div class="tech">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+        <p>CSS3</p>
+      </div>
+      <div class="tech">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+        <p>Python</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <div class="contato">
+      <p>Entre em contato comigo através das redes abaixo:</p>
+      <ul class="lista-contato">
+        <li><i class="email"></i><a href="mailto:lucasgabrielscomparin@gmail.com">lucasgabrielscomparin@gmail.com</a></li>
+        <li><i class="linkedin"></i><a href="https://www.linkedin.com/in/lucas-scomparin-92498a387" target="_blank">LinkedIn</a></li>
+        <li><i class="github"></i><a href="https://github.com/Luczin10" target="_blank">GitHub</a></li>
+        <li><i class="instagram"></i><a href="https://www.instagram.com/luc_scomparin" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 - Lucas Gabriel Scomparin. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
